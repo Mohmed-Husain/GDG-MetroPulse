@@ -1,0 +1,13 @@
+month,avg_high_c,avg_low_c,rain_days,rainfall_mm,notes,source_url
+January,28.3,12.4,0.2,1.0,"Mild, dry winter; peak tourism and outdoor events (Kite festival, Flower show)",https://mausam.imd.gov.in/
+February,31.4,15.0,0.1,0.8,Pleasant daytime; cricket matches and academic session peak,https://mausam.imd.gov.in/
+March,36.3,20.0,0.4,1.3,Rapid warming; onset of summer; midday travel drops slightly,https://mausam.imd.gov.in/
+April,40.1,24.3,0.3,1.5,Severe summer heat; AC metro trains preferred over two-wheelers/buses,https://mausam.imd.gov.in/
+May,41.8,27.2,0.7,5.0,Extreme heatwave conditions; afternoon temperatures exceed 44C; off-peak dip,https://mausam.imd.gov.in/
+June,38.8,27.8,4.6,95.6,Pre-monsoon humidity and sudden squalls; academic reopening rush,https://mausam.imd.gov.in/
+July,33.9,26.0,12.0,291.3,Peak southwest monsoon rainfall; waterlogging on roads shifts road users to metro,https://mausam.imd.gov.in/
+August,32.1,25.1,10.4,214.2,Heavy rainy spells; high metro demand due to dry underground/elevated transit,https://mausam.imd.gov.in/
+September,33.7,24.6,5.2,125.8,Monsoon withdrawal; humid; Ganesh Visarjan and early Navratri prep,https://mausam.imd.gov.in/
+October,35.8,21.6,0.8,11.4,"Post-monsoon warm days, cool nights; Sharad Navratri Garba night crowds",https://mausam.imd.gov.in/
+November,33.2,17.1,0.3,4.2,Pleasant autumn; Diwali festival shopping rush and wedding travel,https://mausam.imd.gov.in/
+December,29.8,13.5,0.1,1.1,Cool winter nights; Kankaria carnival and year-end holiday peaks,https://mausam.imd.gov.in/

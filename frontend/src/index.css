@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --concrete: #EDEFF2;
+  --platform: #F9FAFB;
+  --shelter: #E1E5EA;
+  --hairline: #C9D0D9;
+  --ink: #172033;
+  --ink-soft: #4A5568;
+  --ink-faint: #6B7685;
+
+  --track: #1F4E9C;
+  --track-deep: #163A75;
+  --baseline: #7A8594;
+  --ai-plan: #6A3FB5;
+  --signal: #F2A900;
+  --approved: #2E7D4F;
+  --rejected: #B3243F;
+}
+
+body {
+  margin: 0;
+  background-color: var(--concrete);
+  color: var(--ink);
+  font-family: 'Public Sans', 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom diagonal hatch overlays for crowd levels 4 and 5 */
+.hatch-pattern-level4 {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.25) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.hatch-pattern-level5 {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.35) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  outline: 2px solid var(--rejected);
+  outline-offset: -2px;
+}
+
+/* Focus indicator conforming to transit accessibility */
+:focus-visible {
+  outline: 2px solid var(--track);
+  outline-offset: 2px;
+}
+
+/* Presenter Mode enlarged layout */
+body.presenter-mode {
+  font-size: 1.15rem;
+}
+body.presenter-mode .hide-presenter {
+  display: none !important;
+}
+
+/* Print Stylesheet for A4 Official Operating Notice */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-page-break {
+    page-break-before: always;
+  }
+}

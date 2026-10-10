@@ -1,0 +1,38 @@
+# MetroPulse Operations Policy and Constraints
+# Validated against GMRC operating guidelines, MoHUA standards, and CMRS regulations
+
+protected_stations:
+  - "STN_01"  # APMC (Southern Terminal, primary agricultural hub, Gyaspur depot connection)
+  - "STN_05"  # Paldi (Major bus interchange, NID & cultural hub)
+  - "STN_06"  # Gandhigram (Indian Railways connection, Ashram Road business center)
+  - "STN_07"  # Old High Court (Primary interchange between North-South and East-West corridors)
+  - "STN_10"  # Vadaj (AMTS/BRTS transit interchange)
+  - "STN_11"  # Ranip (GSRTC Central Inter-city Bus Port)
+  - "STN_12"  # Sabarmati Railway Station (Indian Railways Junction & High Speed Rail bullet train)
+  - "STN_15"  # Motera Stadium (Narendra Modi Stadium venue hub, critical event terminus)
+  - "STN_23"  # GNLU (Knowledge corridor, transfer junction for Violet Line GIFT City spur)
+  - "STN_27"  # Infocity (Gandhinagar IT Hub, primary commuter peak station)
+  - "STN_30"  # Sachivalaya (State Government Secretariat, State Assembly)
+  - "STN_31"  # Akshardham (Major national cultural & religious tourist destination)
+  - "STN_35"  # Mahatma Mandir (Northern Terminal, Convention Centre, Gandhinagar Capital Rly Stn)
+
+max_unserved_minutes: 20            # No operational station may be left without a stopping train longer than 20 min. Source: MoHUA Service Benchmark
+comfort_density_pax_per_m2: 3.0     # Standing crowd threshold for comfortable travel (Fruin LOS C/D). Source: GMRC Phase-2 DPR Table 8.1
+critical_density_pax_per_m2: 6.0    # Design crush threshold (maximum allowed during peak periods). Source: GMRC Phase-2 DPR Table 8.1
+super_crush_density_pax_per_m2: 8.0 # Emergency limit; triggers immediate gate throttling and bypass stops. Source: Indian Metro Standard
+max_load_factor_comfort: 0.85       # Maximum allowable train load factor before triggering headway compression
+
+allowed_levers:
+  headway: true                     # Dynamically compress headway between 90s (CBTC limit) and 20 min based on demand
+  rake_length: false                # Rakes are permanently coupled 3-car sets; cannot vary dynamically in daily dispatch
+  short_turn: true                  # Allow short-turn services at Motera Stadium (STN_15) or GNLU (STN_23) during event peaks
+  zero_demand_skip: true            # Skip non-protected stations if smart gate sensors record zero tap-ins and zero alightings
+  reduced_dwell: true               # Compress dwell time from 30s to 15-20s at low-traffic stations
+  ab_skip_stop: false               # Disabled on double-track mainline without passing loops to prevent train bunching
+
+human_approval_required: true       # Chief Train Controller (OCC) must confirm automated schedule overrides
+min_time_between_plan_changes_min: 15 # Minimum stability window between schedule modifications to avoid crew/passenger confusion
+
+gate_control:
+  concourse_holding_threshold_los: "LOS_E" # Throttling entry turnstiles when platform density exceeds 2.0 pax/m2
+  evacuation_time_max_minutes: 4.0        # Compliant with NFPA 130 platform evacuation standards

@@ -1,0 +1,14 @@
+day_type,start_time,end_time,headway_min,direction,rake_coaches,notes,source_url,source_date
+weekday,06:20,08:00,15,both,3,Early morning ramp-up service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+weekday,08:00,11:30,10,both,3,Morning peak office & college rush,https://english.gujaratsamachar.com/news/ahmedabad/ahmedabad-metro-records-over-2-lakh-passengers-on-four-occations-in-august-and-september-25896126498,2026-09-20
+weekday,11:30,17:00,15,both,3,Midday regular baseline service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+weekday,17:00,20:30,10,both,3,Evening peak commuter rush,https://english.gujaratsamachar.com/news/ahmedabad/ahmedabad-metro-records-over-2-lakh-passengers-on-four-occations-in-august-and-september-25896126498,2026-09-20
+weekday,20:30,22:00,18,both,3,Late evening wind-down service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+saturday,06:20,09:00,15,both,3,Saturday morning service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+saturday,09:00,20:00,12,both,3,Saturday daytime retail & leisure service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+saturday,20:00,22:00,18,both,3,Saturday late evening service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+sunday,06:20,10:00,18,both,3,Sunday early morning service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+sunday,10:00,21:00,12,both,3,"Sunday leisure, shopping & family outings",https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+sunday,21:00,22:00,20,both,3,Sunday wind-down service,https://www.magicbricks.com/blog/ahmedabad-metro/129016.html,2026-08-14
+event_matchday,22:00,01:30,6,both,3,Motera cricket match / concert special late night clearance,https://www.gujaratmetrorail.com/wp-content/uploads/2025/04/Press-Note-070226-ENG.pdf,2026-02-07
+festival_navratri,22:00,02:00,8,both,3,Navratri Garba special extended night service,https://timesofindia.indiatimes.com/city/ahmedabad/metro-runs-late-for-garba-revellers/articleshow/104523112.cms,2024-10-18

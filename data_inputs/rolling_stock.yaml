@@ -1,0 +1,38 @@
+# MetroPulse Rolling Stock & Signalling Parameters
+# Operator: Gujarat Metro Rail Corporation (GMRC) Limited
+# Manufacturer: Hyundai Rotem (Changwon, South Korea)
+# Corridors: Phase-1 & Phase-2 (Ahmedabad - Gandhinagar)
+
+coaches_per_rake_current: 3        # DMC + TC + DMC trainset. Source: GMRC Phase-2 DPR (https://www.gujaratmetrorail.com/wp-content/uploads/DPR/Phase-II-DPR_Mar-19_opt.pdf)
+coaches_per_rake_max: 6            # Civil works / platforms (140m) designed for 6 coaches. Source: GMRC Phase-1 DPR (https://www.gujaratmetrorail.com/wp-content/uploads/DPR/DPR-March-2015_opt.pdf)
+seated_per_coach: 45               # Driving Motor Car: 43, Trailer Car: 50. Total 136 seats per 3-car rake. Source: GMRC Phase-2 DPR Table 8.1
+standing_comfort_per_coach: 105    # ESTIMATE @ 3.0 pax/m2 standee area (DMC: 102 standing, TC: 110 standing; ~314 total standing per 3-car train)
+standing_crush_per_coach: 209      # GMRC design crush @ 6.0 pax/m2 (DMC: 204 standing, TC: 220 standing; 628 total standing per 3-car train). Source: GMRC Phase-2 DPR Table 8.1
+total_rake_crush_capacity: 764     # 136 seated + 628 standing @ 6 pax/m2. Dense crush @ 8 pax/m2 = 988. Source: GMRC Phase-2 DPR Table 8.1
+max_speed_kmph: 90                 # Design speed 90 km/h; max operational speed 80 km/h. Source: GMRC Phase-2 DPR Section 6 (https://www.gujaratmetrorail.com/wp-content/uploads/DPR/Phase-II-DPR_Mar-19_opt.pdf)
+service_speed_kmph: 34             # Scheduled commercial speed 33-34 km/h including stops. Source: GMRC Phase-2 DPR Section 6
+acceleration_mps2: 1.0             # Normal service acceleration: 1.0 m/s2. Source: GMRC Rolling Stock Technical Spec (https://metrorailnews.in/self-sufficiency-in-rolling-stock-manufacturing/)
+deceleration_mps2: 1.1             # Normal service brake: 1.1 m/s2; Emergency brake: 1.3 m/s2. Source: GMRC Rolling Stock Specification
+door_count_per_coach_side: 4       # 4 pairs of 1.40m wide bi-parting sliding doors per side. Source: GMRC Rolling Stock DPR
+signalling_system: "CBTC (CATC)"   # Nippon Signal Communication-Based Train Control (ATP / ATO / ATS). Source: IRE Journals OCC Report (https://www.irejournals.com/formatedpaper/1719698.pdf)
+min_headway_seconds: 90            # CBTC moving block safe minimum design headway is 90 seconds (40 tph). Source: IRE Journals OCC Report (https://www.irejournals.com/formatedpaper/1719698.pdf)
+fleet_total_rakes: 32              # 32 rakes (96 coaches) delivered by Hyundai Rotem for Phase 1 + Phase 2 operational pool. Source: GMRC Official Overview
+fleet_available_for_service: 26    # ESTIMATE (32 total less 6 rakes in scheduled maintenance, wheel truing, stabling reserve)
+depots:
+  - name: "Gyaspur Depot"
+    location: "Vasna / APMC (Red Line North-South)"
+    stabling_capacity_rakes: 20
+    source: "https://www.gujaratmetrorail.com/project-overview2/"
+  - name: "Apparel Park Depot"
+    location: "Amraiwadi (Blue Line East-West)"
+    stabling_capacity_rakes: 18
+    source: "https://www.gujaratmetrorail.com/project-overview2/"
+  - name: "Indroda Depot"
+    location: "Gandhinagar (Yellow Line Phase 2)"
+    stabling_capacity_rakes: 14
+    source: "https://metrorailnews.in/the-ahmedabad-metro-phase-2/"
+standard_dwell_seconds: 30         # Standard intermediate station dwell. Source: GMRC Timetable and Operating Schedule
+min_dwell_seconds: 20              # Minimum dwell at low-density stations during off-peak. ESTIMATE based on door cycle (4s open + 12s passenger exchange + 4s close)
+max_dwell_seconds: 60              # Extended dwell at interchange stations (Old High Court) and event hubs (Motera Stadium). Source: GMRC match-day advisory
+door_flow_pax_per_second: 1.3      # ESTIMATE transit engineering benchmark (1.2 to 1.5 passengers/second through 1.4m dual door)
+terminal_turnback_minutes: 2.5     # Crossover track turnback time at APMC and Mahatma Mandir. ESTIMATE based on 90s headway layout
