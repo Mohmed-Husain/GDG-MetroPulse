@@ -12,11 +12,27 @@ from backend.templates.announcements import get_template_announcements
 load_dotenv()
 
 logger = logging.getLogger("metropulse.llm")
+LLM_API_KEY = os.getenv("LLM_API_KEY", os.getenv("DEEPSEEK_API_KEY", "")).strip()
 
-LLM_BASE_URL = os.getenv("LLM_BASE_URL", "http://localhost:11434/v1")
-LLM_MODEL = os.getenv("LLM_MODEL", "qwen2.5:7b")
-LLM_TIMEOUT_S = float(os.getenv("LLM_TIMEOUT_S", "20"))
+# If DeepSeek key provided and no custom base url specified, default to DeepSeek cloud API
+if LLM_API_KEY and not os.getenv("LLM_BASE_URL"):
+    default_base_url = "https://api.deepseek.com"
+    default_model = "deepseek-chat"
+else:
+    default_base_url = "http://localhost:11434/v1"
+    default_model = "qwen2.5:7b"
+
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", default_base_url)
+LLM_MODEL = os.getenv("LLM_MODEL", default_model)
+LLM_TIMEOUT_S = float(os.getenv("LLM_TIMEOUT_S", "25"))
 LLM_ENABLE_THINKING = os.getenv("LLM_ENABLE_THINKING", "false").lower() == "true"
+
+
+def get_headers() -> Dict[str, str]:
+    headers = {"Content-Type": "application/json"}
+    if LLM_API_KEY:
+        headers["Authorization"] = f"Bearer {LLM_API_KEY}"
+    return headers
 
 
 class LLMUnavailable(Exception):
@@ -49,11 +65,11 @@ def extract_json_from_response(text: str) -> Dict[str, Any]:
 
 
 async def check_llm_health() -> Dict[str, Any]:
-    """Pings local LLM endpoint to measure latency and availability."""
+    """Pings LLM endpoint to measure latency and availability."""
     url = f"{LLM_BASE_URL.rstrip('/')}/models"
     try:
-        async with httpx.AsyncClient(timeout=3.0) as client:
-            resp = await client.get(url)
+        async with httpx.AsyncClient(timeout=4.0) as client:
+            resp = await client.get(url, headers=get_headers())
             if resp.status_code == 200:
                 data = resp.json()
                 models = [m.get("id", "") for m in data.get("data", [])]
@@ -108,7 +124,11 @@ Do NOT output any markdown commentary. Output valid JSON only."""
                 ],
                 "temperature": 0.1,
             }
-            resp = await client.post(f"{LLM_BASE_URL.rstrip('/')}/chat/completions", json=payload)
+            resp = await client.post(
+                f"{LLM_BASE_URL.rstrip('/')}/chat/completions",
+                json=payload,
+                headers=get_headers(),
+            )
             if resp.status_code == 200:
                 res_json = resp.json()
                 raw_content = res_json["choices"][0]["message"]["content"]
@@ -215,7 +235,11 @@ Output ONLY valid JSON array with objects matching:
                 ],
                 "temperature": 0.3,
             }
-            resp = await client.post(f"{LLM_BASE_URL.rstrip('/')}/chat/completions", json=payload)
+            resp = await client.post(
+                f"{LLM_BASE_URL.rstrip('/')}/chat/completions",
+                json=payload,
+                headers=get_headers(),
+            )
             if resp.status_code == 200:
                 raw_content = resp.json()["choices"][0]["message"]["content"]
                 items = extract_json_from_response(raw_content)
